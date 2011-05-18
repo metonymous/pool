@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20110518173642) do
     t.timestamp "updated_at",                     :null => false
   end
 
-  create_table "user", :force => true do |t|
+  create_table "users", :force => true do |t|
     t.string   "identity_url"
     t.string   "nickname"
     t.string   "fullname"

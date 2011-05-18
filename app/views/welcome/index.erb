@@ -1,0 +1,7 @@
+<h1><em>pool.</em>bitcomex.com</h1>
+<p class="subheading">bitcoin community exchange mining pool</p>
+<% if @current_user -%>
+<p>Welcome <%= @current_user %></p>
+<% else -%>
+<%= render :partial => 'sessions/new' %>
+<% end -%>

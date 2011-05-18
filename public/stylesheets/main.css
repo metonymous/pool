@@ -1,0 +1,48 @@
+body {
+	font-family: 'Ubuntu', arial;
+	font-weight: 200;
+	text-align: center;
+}
+h1 { 
+	font-family: 'Ubuntu', arial, serif; 
+	font-weight: 300;
+	font-size: 3em;
+	margin: 0.5em;
+	color: #ddd;
+	font-style: italic;
+	margin-bottom: 0;
+}
+h1 em {
+	color: #000;
+	font-weight: 500;
+	font-style: normal;
+}
+p.subheading {
+	font-family: 'Ubuntu', arial, serif;
+	font-weight: 200;
+	margin-top: 0;
+}
+label {
+	display: block;
+}
+form input {
+	font-family: 'Ubuntu', arial;
+	font-weight: 200;
+	font-size: 1em;
+}
+form input[type="text"] {
+	width: 15em;
+	height: 18px;
+}
+form input[type="submit"] {
+	border: 1px solid #ccc;
+	background-color: #eee;
+	height: 24px;
+}
+form input[type="text"] {
+   background: url(http://openid.net/login-bg.gif) no-repeat;
+   background-color: #fff;
+   background-position: 0 50%;
+   color: #000;
+   padding-left: 18px;
+}

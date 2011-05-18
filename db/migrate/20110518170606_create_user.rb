@@ -1,6 +1,6 @@
 class CreateUser < ActiveRecord::Migration
   def self.up
-    create_table :user do |t|
+    create_table :users do |t|
       t.string :identity_url, :required => true
       t.string :nickname
       t.string :fullname
@@ -14,6 +14,6 @@ class CreateUser < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :user
+    drop_table :users
   end
 end

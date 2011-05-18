@@ -1,0 +1,9 @@
+  <%= flash.each do |key, msg| %>
+      <%= content_tag :div, msg, :class => [key, "message"], :id => "notice_#{key}" %>
+  <% end %>
+  <%= form_tag(sessions_url) do %>
+    <p>
+      <label for="openid_identifier">OpenID or Bitcoin Address</label>
+      <%= text_field_tag "openid_identifier" %>
+      <%= submit_tag  'Join', :disable_with => "Join" %> </p>
+  <% end %>

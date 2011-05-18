@@ -1,12 +1,21 @@
 class SessionsController < ApplicationController
-   def create
-     @account = Account.new
-     if using_open_id?
-       open_id_authentication(params[:openid_identifier])
-     else
-       password_authentication(params[:name], params[:password])
-     end
-   end
+  def create
+    @session = UserSession.new
+    if using_open_id?
+      open_id_authentication(params[:openid_identifier])
+    else
+      password_authentication(params[:name], params[:password])
+    end
+  end
+
+  def new
+    @session = UserSession.new
+  end
+
+  def destroy
+    current_session.destroy
+    redirect_to new_session_url
+  end
 
 
    protected
@@ -34,17 +43,25 @@ class SessionsController < ApplicationController
          when :failed
            failed_login "Sorry, the OpenID verification failed"
          when :successful
-           if @current_user = @account.users.find_by_identity_url(identity_url)
+           if User.find_by_identity_url(identity_url)
              assign_registration_attributes!(registration)
 
              if current_user.save
-               successful_login
+               successful_login "Welcome back"
              else
                failed_login "Your OpenID profile registration failed: " +
                  @current_user.errors.full_messages.to_sentence
              end
            else
-             failed_login "Sorry, no user by that identity URL exists"
+	     @current_user = User.new(:identity_url => identity_url)
+             assign_registration_attributes!(registration)
+	     
+             if current_user.save
+               successful_login "New account created"
+             else
+               failed_login "Your OpenID profile registration failed: " +
+                 @current_user.errors.full_messages.to_sentence
+             end
            end
          end
        end
@@ -66,8 +83,10 @@ class SessionsController < ApplicationController
 
 
    private
-     def successful_login
+     def successful_login(message="Successful login")
+       flash[:notice] = message
        session[:user_id] = @current_user.id
+       session.save
        redirect_to(root_url)
      end
 

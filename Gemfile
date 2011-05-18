@@ -5,7 +5,7 @@ gem 'rails', '3.0.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'rack-openid', '>=0.2.1', :require => 'rack/openid'
-
+gem "authlogic-oid"
 gem 'mysql'
 gem 'ruby-openid'
 
