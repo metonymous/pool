@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
    def create
+     @account = Account.new
      if using_open_id?
        open_id_authentication(params[:openid_identifier])
      else

@@ -1,7 +1,6 @@
 class CreateAccounts < ActiveRecord::Migration
   def self.up
     create_table :accounts do |t|
-      t.has_many :users
       t.timestamps
     end
   end
